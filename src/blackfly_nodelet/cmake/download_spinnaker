@@ -47,7 +47,7 @@ destination_folder = sys.argv[2]
 
 if not os.path.exists(os.path.join(os.getcwd(), "usr/lib/")):
     if not os.path.exists(os.path.join(os.getcwd(), folder_name)):
-        with tarfile.open(name='/home/oveggeland/Desktop/blackfly/src/blackfly_nodelet/spinnaker-1.27.0.48-Ubuntu18.04-amd64-pkg.tar.gz', mode="r:gz") as tar:
+        with tarfile.open(name='/home/oveggeland/Desktop/my_ws/src/blackfly_nodelet/spinnaker-1.27.0.48-Ubuntu18.04-amd64-pkg.tar.gz', mode="r:gz") as tar:
             tar.extractall()
 
     logging.info("Unpacking debs.")
