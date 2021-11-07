@@ -1,0 +1,19 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~cam_id" : \b [int] id of the camera to change the settings min: 0, default: 0, max: 10
+- \b "~acquisition_start" : \b [bool] start frame acquisition min: False, default: False, max: True
+- \b "~acquisition_stop" : \b [bool] stop frame acquisition min: False, default: False, max: True
+- \b "~fps" : \b [double] change frame rate min: 1.0, default: 20.0, max: 50.0
+- \b "~enable_gamma" : \b [bool] enable/disable gamma min: False, default: True, max: True
+- \b "~gamma" : \b [double] set gamma value min: 0.25, default: 1.0, max: 4.0
+- \b "~exposure_auto" : \b [int] change auto exposure type min: 0, default: 2, max: 2
+- \b "~exposure_time" : \b [int] change exposure time (Must first set ExposureAuto_Off) min: 12, default: 20000, max: 500000
+- \b "~gain_auto" : \b [int] change auto gain type min: 0, default: 2, max: 2
+- \b "~gain" : \b [int] change gain (Must first set ExposureGain_Off) min: 0, default: 1, max: 46
+- \b "~binning_mode" : \b [int] change binning type min: 0, default: 0, max: 1
+- \b "~binning" : \b [int] change binning min: 1, default: 2, max: 4
+- \b "~lighting_mode" : \b [int] change lighting type min: 0, default: 0, max: 2
+- \b "~auto_exposure_priority" : \b [int] change auto exposure priority type min: 0, default: 0, max: 1
+

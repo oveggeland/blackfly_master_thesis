@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Spinnaker Documentation
+TryExec=nautilus
+Exec=nautilus /usr/share/doc/spinnaker-doc
+Icon=/usr/share/pixmaps/SpinnakerIcon.ico
+Terminal=false
+Type=Application
+StartupNotify=false

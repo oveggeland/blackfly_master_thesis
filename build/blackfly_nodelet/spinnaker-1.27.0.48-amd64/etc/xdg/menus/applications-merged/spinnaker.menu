@@ -1,0 +1,16 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+  "http://www.freedesktop.org/standards/menu-spec/menu-1.0.dtd">
+<Menu>
+  <Name>Applications</Name>
+  <Menu>
+    <Name>FLIR Integrated Imaging Solutions, Inc</Name>
+    <Directory>spinnaker.directory</Directory>
+    <Include>
+      <Filename>spinview.desktop</Filename>
+      <Filename>spinnakercdoc.desktop</Filename>
+      <Filename>spinnakercppdoc.desktop</Filename>
+      <Filename>spinnakerexampleGnome.desktop</Filename>
+      <Filename>spinnakerexampleKde.desktop</Filename>
+    </Include>
+  </Menu>
+</Menu>

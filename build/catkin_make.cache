@@ -1,0 +1,2 @@
+blackfly_nodelet
+-DCATKIN_DEVEL_PREFIX=/home/oveggeland/Desktop/my_ws/devel -DCMAKE_INSTALL_PREFIX=/home/oveggeland/Desktop/my_ws/install -G Unix Makefiles
