@@ -1,0 +1,84 @@
+#!/bin/env python3.8
+#
+# Software License Agreement (BSD)
+#
+# @author    Mike Purvis <mpurvis@clearpathrobotics.com>
+# @copyright (c) 2014, Clearpath Robotics, Inc., All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that
+# the following conditions are met:
+# * Redistributions of source code must retain the above copyright notice, this list of conditions and the
+#   following disclaimer.
+# * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+#   following disclaimer in the documentation and/or other materials provided with the distribution.
+# * Neither the name of Clearpath Robotics nor the names of its contributors may be used to endorse or
+#   promote products derived from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+# PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+# TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+
+import http.cookiejar
+cookielib = http.cookiejar
+import io
+import logging
+import shutil
+import subprocess
+import sys
+import tarfile
+import urllib
+import os
+import glob
+
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+
+logging.basicConfig(level=logging.INFO)
+
+
+folder_name = 'spinnaker-1.27.0.48-amd64'
+shared_library = 'libSpinnaker.so.1.27.0.48'
+destination_folder = sys.argv[2]
+
+if not os.path.exists(os.path.join(os.getcwd(), "usr/lib/")):
+    if not os.path.exists(os.path.join(os.getcwd(), folder_name)):
+        with tarfile.open(name='/home/oveggeland/Desktop/blackfly/src/blackfly_nodelet/spinnaker-1.27.0.48-Ubuntu18.04-amd64-pkg.tar.gz', mode="r:gz") as tar:
+            tar.extractall()
+
+    logging.info("Unpacking debs.")
+    debs = glob.glob(os.path.join(os.getcwd(), folder_name, "libspinvideoencoder-*.deb"))
+    debs += glob.glob(os.path.join(os.getcwd(), folder_name, "*spinnaker-*.deb"))
+    for deb in debs:
+        subprocess.call(['dpkg', '-x', deb, os.path.join(os.getcwd(), folder_name)])
+
+    # Fix for 1.13.0.31
+    os.remove(os.path.join(os.getcwd(), folder_name, "usr/lib/libspinnaker.so.1"))
+    os.symlink(shared_library, os.path.join(os.getcwd(), folder_name, "usr/lib/libSpinnaker.so.1"))
+
+    if not os.path.exists(os.path.join(os.getcwd(), "usr")):
+        os.mkdir(os.path.join(os.getcwd(), "usr"))
+
+    # For every folder/file, copy it into the /usr folder we just created.
+    for filename in os.listdir(os.path.join(os.getcwd(), folder_name, "usr")):
+        if not os.path.exists(os.path.join(os.getcwd(), "usr", filename)):
+            shutil.move(os.path.join(os.getcwd(), folder_name, "usr", filename), os.path.join(os.getcwd(), "usr", filename))
+
+    # now we do some thing for XML files; copy them next to the catkin binary
+    xml_path = os.path.join(os.getcwd(), "usr/lib/")
+    xml_files = os.listdir(xml_path)
+
+    try:
+        os.makedirs(destination_folder)
+    except:
+        logging.info("Error XML folder either exists or can't be created.")
+
+    for files in xml_files:
+        if files.endswith(".xml"):
+            origin_file = os.path.join(xml_path, files)
+            print('Copying ' + origin_file + ' to ' + destination_folder)
+            shutil.copy(origin_file, destination_folder)
