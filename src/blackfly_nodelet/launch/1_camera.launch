@@ -6,7 +6,7 @@
   args="load blackfly/blackfly_nodelet nodelet_manager"  clear_params="true" output="screen">
 
     <!-- Serial Numbers of Cameras -->
-    <rosparam param="camera_serial_nums">["19061688"]</rosparam>
+    <rosparam param="camera_serial_nums">["19423300"]</rosparam>
     <!-- Names of Cameras (used for topic names, etc) -->
     <rosparam param="camera_names">["cam0"]</rosparam>
     <!-- Paths to Camera info files -->

@@ -21,7 +21,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/oveggeland/Desktop/my_ws/src/blackfly_nodelet/include"
   "/home/oveggeland/Desktop/my_ws/src/blackfly_nodelet/BEFORE"
   "/home/oveggeland/Desktop/my_ws/devel/include"
-  "blackfly_nodelet/usr/include/spinnaker"
+  "/usr/include/spinnaker"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/opencv4"

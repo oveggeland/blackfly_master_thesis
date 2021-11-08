@@ -7,7 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/oveggeland/Desktop/my_ws/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH='/home/oveggeland/Desktop/master_project/devel/lib:/opt/ros/noetic/lib:/opt/ros/noetic/lib/x86_64-linux-gnu'
+export PKG_CONFIG_PATH='/home/oveggeland/Desktop/master_project/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig:/opt/ros/noetic/lib/x86_64-linux-gnu/pkgconfig'
 export PWD='/home/oveggeland/Desktop/my_ws/build'
-export ROSLISP_PACKAGE_DIRECTORIES="/home/oveggeland/Desktop/my_ws/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/oveggeland/Desktop/my_ws/src:$ROS_PACKAGE_PATH"
+export PYTHONPATH='/home/oveggeland/Desktop/master_project/devel/lib/python3/dist-packages:/opt/ros/noetic/lib/python3/dist-packages'

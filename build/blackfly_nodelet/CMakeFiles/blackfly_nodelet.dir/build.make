@@ -79,7 +79,7 @@ blackfly_nodelet_EXTERNAL_OBJECTS =
 
 /home/oveggeland/Desktop/my_ws/devel/lib/libblackfly_nodelet.so: blackfly_nodelet/CMakeFiles/blackfly_nodelet.dir/src/blackfly_nodelet.cpp.o
 /home/oveggeland/Desktop/my_ws/devel/lib/libblackfly_nodelet.so: blackfly_nodelet/CMakeFiles/blackfly_nodelet.dir/build.make
-/home/oveggeland/Desktop/my_ws/devel/lib/libblackfly_nodelet.so: blackfly_nodelet/usr/lib/libSpinnaker.so
+/home/oveggeland/Desktop/my_ws/devel/lib/libblackfly_nodelet.so: /usr/lib/libSpinnaker.so
 /home/oveggeland/Desktop/my_ws/devel/lib/libblackfly_nodelet.so: /opt/ros/noetic/lib/libcamera_info_manager.so
 /home/oveggeland/Desktop/my_ws/devel/lib/libblackfly_nodelet.so: /opt/ros/noetic/lib/libcamera_calibration_parsers.so
 /home/oveggeland/Desktop/my_ws/devel/lib/libblackfly_nodelet.so: /opt/ros/noetic/lib/libcv_bridge.so
